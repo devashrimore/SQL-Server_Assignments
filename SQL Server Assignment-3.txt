@@ -1,0 +1,47 @@
+1]
+select OrderNumber,OrderDate,ProductName,Product.UnitPrice
+from Customer
+Right join Order_tbl
+on Customer.Id=Order_tbl.CustomerId
+Right join OrderItem
+on Order_tbl.Id=OrderItem.OrderId
+Right join Product
+on Product.Id=OrderItem.ProductID
+where Phone='030-0074321'
+
+alter table product add Category nvarchar(20);
+Update  Product set Category='Hygiene'
+where Id=204
+
+2]
+Select ProductName from Product where Category='Seafood';
+
+
+3]
+select FirstName,LastName,OrderDate,OrderNumber,TotalAmount,ShippingCompanyName,ShippingDate
+from Customer
+inner join Order_tbl
+on Customer.Id=Order_tbl.CustomerId
+inner join OrderItem
+on Order_tbl.Id=OrderItem.OrderId
+where Customer.City not like 'London'
+
+4]
+select FirstName,LastName,OrderDate,OrderNumber,ProductName,TotalAmount,ShippingCompanyName,ShippingDate
+from Customer
+inner join Order_tbl
+on Customer.Id=Order_tbl.CustomerId
+inner join OrderItem
+on Order_tbl.Id=OrderItem.OrderId
+inner join Product
+on Product.Id=OrderItem.ProductId
+where ProductName like 'Chai'
+
+5]
+alter table Employee1 add Rating nvarchar(20);
+Update  Employee1 set Department='Buisness Unit',Rating=8
+where Id=10
+
+6]
+select Name,Department,Rating from Employee1
+where Id=2

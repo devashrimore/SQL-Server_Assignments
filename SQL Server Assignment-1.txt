@@ -1,0 +1,54 @@
+1]
+Create database Info
+
+2]
+Create table Customer(
+Id int not null primary key,
+FirstName nvarchar(40) not null,
+LastName nvarchar(40) not null,
+City nvarchar(40),
+Country nvarchar(40)not null,
+Phone nvarchar(20)not null
+)
+
+3]
+Create table Order_tbl(
+Id int not null primary key,
+OrderDate datetime not null,
+OrderNumber nvarchar(10) not null,
+CustomerId int,
+TotalAmount decimal(12,2)
+)
+
+4]
+Create table OrderItem(
+Id int not null primary key,
+OrderId int,
+ProductId int,
+UnitPrice decimal(12,2),
+Quantity int
+)
+
+5]
+alter table OrderItem 
+add constraint orderid_FK foreign key (OrderID) 
+references Order_tbl(Id)
+
+6]
+create table Product
+(
+Id int Not Null primary key,
+ProductName nvarchar(50) not null,
+UnitPrice decimal(12,2),
+Package nvarchar(30)
+)
+
+7]
+Insert into Customer (Id,FirstName,LastName,City,Country,Phone) 
+values (1,'Priyanka','Patil','Delhi','India',2343434222)
+
+8]
+Select * From Customer Where Country Like '[ai]%'
+
+9]
+Select * From Customer Where FirstName Like '__i%'

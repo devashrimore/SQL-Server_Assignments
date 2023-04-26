@@ -1,0 +1,38 @@
+1]
+select ProductName,ShippingCompanyName,(Product.Unitprice*Quantity)as TotalPrice
+from Product 
+ full outer join OrderItem
+on Product.Id=OrderItem.ProductId
+ full outer join Order_tbl
+on Order_tbl.Id=OrderItem.OrderId
+where ShippingCompanyName='Exotic Liquids' and Product.UnitPrice>50
+
+2]
+select top 1 [JoiningDate], [Name], [Department],[Rating],[ManagerId] FROM Employee1  
+order by [JoiningDate] asc
+
+3]
+select top 1 [JoiningDate], [Name], [Department],[Rating],[ManagerId] FROM Employee1  
+order by [JoiningDate] desc
+
+4]
+select top 1 [UnitPrice] as MostExpensive, [ProductName]FROM Product  
+order by [UnitPrice] desc
+select top 1 [UnitPrice] as LeastExpensive, [ProductName]FROM Product  
+order by [UnitPrice] asc
+
+5]
+
+select ProductName from Product where Unitinstock=0
+
+6]
+select ProductName from Product where Unitinstock<Unitonorder
+
+7]
+select Category,ShippingCompanyName as Supplier 
+from Product
+left join OrderItem
+on Product.Id=OrderItem.ProductId
+left join Order_tbl
+on OrderItem.OrderId=Order_tbl.Id
+group by Category,ShippingCompanyName

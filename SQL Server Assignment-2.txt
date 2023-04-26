@@ -1,0 +1,79 @@
+1] 
+Select * from Customer where Country='Germany'
+
+
+2] 
+Select FirstName,LastName from Customer
+
+
+3]
+alter table Customer add Fax int
+
+Update Customer set Fax=890800789 where Id=2
+
+Select * From Customer Where Fax like '%%'
+
+
+4]
+Select * From Customer Where FirstName Like '_U%'
+
+
+5]
+Select * from OrderItem where UnitPrice>10 and UnitPrice<20
+
+
+6]
+select * from Order_tbl order by ShippingDate
+
+
+7]
+select * from Order_tbl where ShipName like 'La corne dabondance'and
+ShippingDate between '2019/6/23' and '2022/12/30'
+
+
+8]
+select ProductName,ShippingCompanyName
+from Product 
+left join OrderItem
+on Product.Id=OrderItem.ProductId
+left join Order_tbl
+on Order_tbl.Id=OrderItem.OrderId
+where ShippingCompanyName='Exotic Liquids'
+
+
+9]
+SELECT avg(OrderItem.Quantity) as Total, Product.ProductName
+FROM Product
+left JOIN OrderItem
+ON OrderItem.ProductID=Product.Id
+group by Product.ProductName
+
+
+10]
+select ShippingCompanyName,ShipName
+from Order_tbl
+
+
+11]
+Create table Employee1
+(Id int primary key identity(1,1),
+Name nvarchar(50) not null,
+ManagerId int not null
+)
+
+
+SELECT m.Name,e.Name as ManagerName
+FROM Employee1 e
+inner JOIN Employee1 m
+ON e.Id=m.ManagerId
+
+
+12]
+select ProductName,ShippingCompanyName,(Product.Unitprice*Quantity)as TotalPrice
+from Product 
+ full outer join OrderItem
+on Product.Id=OrderItem.ProductId
+ full outer join Order_tbl
+on Order_tbl.Id=OrderItem.OrderId
+where ShippingCompanyName='Exotic Liquids' and Product.UnitPrice>50
+
